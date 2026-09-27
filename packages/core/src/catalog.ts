@@ -280,10 +280,10 @@ export function initialStock(p: Product, branchId: string): number {
   if (scarce !== undefined) return scarce;
   const r = mulberry32(hash(`${p.id}@${branchId}`))();
   const [lo, hi] =
-    p.category === 'lumber' || p.category === 'stud' ? [80, 900]
-    : p.category === 'sheet' || p.category === 'drywall' ? [60, 500]
-    : p.category === 'post' ? [20, 160]
-    : [30, 400];
+    p.category === 'lumber' || p.category === 'stud' ? [200, 1200]
+    : p.category === 'sheet' || p.category === 'drywall' ? [150, 700]
+    : p.category === 'post' ? [40, 200]
+    : [60, 500];
   return Math.round(lo + r * (hi - lo));
 }
 

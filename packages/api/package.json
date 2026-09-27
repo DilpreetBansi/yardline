@@ -1,0 +1,19 @@
+{
+  "name": "@yardline/api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "HTTP API (Hono) and Postgres data layer. Runs on Node with Postgres, or in the browser on PGlite.",
+  "exports": {
+    ".": "./src/index.ts",
+    "./pglite": "./src/pglite.ts"
+  },
+  "dependencies": {
+    "@yardline/core": "0.1.0",
+    "hono": "4.13.9",
+    "zod": "4.6.5"
+  },
+  "peerDependencies": {
+    "@electric-sql/pglite": "0.5.8"
+  }
+}
