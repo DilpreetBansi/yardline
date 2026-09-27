@@ -24,11 +24,15 @@ export function pgliteDb(pg: PGlite): Db {
   return wrap(pg, pg);
 }
 
-/** A fresh in-memory Postgres with pg_trgm, for tests and the in-browser demo. */
+/**
+ * Postgres with pg_trgm: in memory for tests, or persisted to IndexedDB (idb://name) in the
+ * browser. relaxedDurability flushes to IndexedDB after the query returns instead of before,
+ * which is what keeps the demo fast; the worst case is losing the last write on a crash.
+ */
 export async function createPglite(dataDir?: string): Promise<PGlite> {
   const [{ PGlite }, { pg_trgm }] = await Promise.all([
     import('@electric-sql/pglite'),
     import('@electric-sql/pglite/contrib/pg_trgm'),
   ]);
-  return PGlite.create(dataDir, { extensions: { pg_trgm } });
+  return PGlite.create(dataDir, { extensions: { pg_trgm }, relaxedDurability: dataDir?.startsWith('idb://') ?? false });
 }

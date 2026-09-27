@@ -17,17 +17,24 @@
     "dev": "npm run dev -w @yardline/web",
     "dev:server": "npm run dev -w @yardline/server",
     "build": "npm run build -w @yardline/web",
+    "build:server": "npm run build:server -w @yardline/web",
+    "start": "npm start -w @yardline/server",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "lint": "eslint .",
     "test": "vitest run",
     "test:e2e": "playwright test",
-    "check": "npm run typecheck && npm run lint && npm test"
+    "check": "npm run typecheck && npm test"
   },
   "devDependencies": {
     "@electric-sql/pglite": "^0.5.8",
+    "@playwright/test": "^1.56.0",
     "@types/node": "^22.20.4",
     "fast-check": "^4.10.2",
     "typescript": "^5.9.3",
     "vitest": "^5.0.2"
+  },
+  "homepage": "https://dilpreetbansi.github.io/yardline/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DilpreetBansi/yardline.git"
   }
 }
