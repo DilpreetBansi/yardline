@@ -1,0 +1,32 @@
+{
+  "name": "yardline",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Quoting and ordering for building-supply yards: paste a contractor's materials list, get a priced quote, share it, and turn it into an order.",
+  "license": "MIT",
+  "author": "Dilpreet Singh Bansi",
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "dev": "npm run dev -w @yardline/web",
+    "dev:server": "npm run dev -w @yardline/server",
+    "build": "npm run build -w @yardline/web",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "check": "npm run typecheck && npm run lint && npm test"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.4",
+    "fast-check": "^4.10.2",
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.2"
+  }
+}
